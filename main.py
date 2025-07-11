@@ -14,9 +14,11 @@ def main():
 
     background = pygame.image.load("assets/images/background.png").convert()
     ground = pygame.image.load("assets/images/ground.png").convert()
+    shrubs = pygame.image.load("assets/images/shrubs.png").convert_alpha()
 
     background_x = 0
     ground_x = 0
+    shrubs_x = 0
 
     while running:
         for event in pygame.event.get():
@@ -25,9 +27,16 @@ def main():
 
         draw_tiled_images(background, screen, background_x, 0)
         draw_tiled_images(ground, screen, ground_x, SCREEN_HEIGHT - ground.get_height())
+        draw_tiled_images(
+            shrubs,
+            screen,
+            shrubs_x,
+            SCREEN_HEIGHT - (shrubs.get_height() + ground.get_height()),
+        )
 
         background_x = scroll_image(background, 1, background_x)
         ground_x = scroll_image(ground, 4, ground_x)
+        shrubs_x = scroll_image(shrubs, 2, shrubs_x)
 
         pygame.display.flip()
         clock.tick(60)
