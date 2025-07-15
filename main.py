@@ -45,9 +45,10 @@ def main():
 
 
 def draw_tiled_images(image, screen, x_pos, y_pos):
-    # Minimum number of tiles that are required to seamlessly cover whole screen
-    # Needs atleast two to always keep the screen covered
-    num_tiles = max(2, math.ceil(screen.get_width() / image.get_width()))
+    # Minimum number of tiles that are required to span the whole screen
+    # and then one extra tile, as scroll is reset only when one whole tile
+    # goes off screen.
+    num_tiles = math.ceil(screen.get_width() / image.get_width()) + 1
     for i in range(num_tiles):
         screen.blit(image, ((x_pos + i * image.get_width()), y_pos))
 
