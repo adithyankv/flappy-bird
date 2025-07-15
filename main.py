@@ -15,6 +15,7 @@ def main():
     background = pygame.image.load("assets/images/background.png").convert()
     ground = pygame.image.load("assets/images/ground.png").convert()
     shrubs = pygame.image.load("assets/images/shrubs.png").convert_alpha()
+    bird = pygame.image.load("assets/images/bird.png").convert_alpha()
 
     background_x = 0
     ground_x = 0
@@ -37,6 +38,11 @@ def main():
         background_x = scroll_image(background, 1, background_x)
         ground_x = scroll_image(ground, 4, ground_x)
         shrubs_x = scroll_image(shrubs, 2, shrubs_x)
+
+        bird_width, bird_height = 64, 48
+        bird_x_pos = SCREEN_WIDTH / 2 - bird_width / 2
+        bird_y_pos = SCREEN_HEIGHT / 2 - bird_height / 2
+        screen.blit(bird, (bird_x_pos, bird_y_pos))
 
         pygame.display.flip()
         clock.tick(60)
